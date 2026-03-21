@@ -1,34 +1,24 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import SimpleTable from './TransactionalTable'
+import AddTransactionForm from './AddTransactionForm'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [transactions, setTransactions] = useState([
+  { id: 1, date: '2026-03-13', description: 'SAFEWAY #1463', amount: -53.31, category: 'Food' },
+  { id: 2, date: '2026-03-13', description: 'SPOTIFY',       amount: -9.99,  category: 'Entertainment' },
+])
+  
+  function handleAdd(newTransaction) {
+    setTransactions([...transactions, newTransaction])
+  }
+  
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <h1>Finance Tracker</h1>
+      <AddTransactionForm onAdd={handleAdd} />
+      <SimpleTable data={transactions} />
+    </div>
   )
 }
 
