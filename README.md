@@ -2,6 +2,8 @@
 
 ## Overview
 
+### A self hosted finacial tracker, used both personally and as a skills check.
+
 ## Features
 
 ## Tech Stack
